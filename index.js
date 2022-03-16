@@ -7,16 +7,10 @@ const {
   Transaction,
   Account,
 } = require("@solana/web3.js");
-
-//STEP-1 Generating a new wallet keypair
 const newPair = new Keypair();
 console.log(newPair);
-
-//STEP-2 Storing the public and private key
 const publicKey = new PublicKey(newPair._keypair.publicKey).toString();
 const secretKey = newPair._keypair.secretKey;
-
-//STEP-3 Getting the wallet Balance
 const getWalletBalance = async () => {
   try {
     const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
@@ -30,8 +24,6 @@ const getWalletBalance = async () => {
     console.log(err);
   }
 };
-
-//STEP-4 Air dropping SOL (in terms of LAMPORTS)
 const airDropSol = async () => {
   try {
     const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
@@ -46,8 +38,6 @@ const airDropSol = async () => {
     console.log(err);
   }
 };
-
-//STEP-5 Driver function
 const driverFunction = async () => {
     await getWalletBalance();
     await airDropSol();
